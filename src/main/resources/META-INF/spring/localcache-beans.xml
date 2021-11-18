@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <bean id="lcLocalCacheHolder" class="com.eisgroup.eis.localcache.LocalCacheHolder"/>
+    
+    <bean id="lcLocalCacheScopeAspect" class="com.eisgroup.eis.localcache.LocalCacheScopeAspect">
+        <property name="locallyCachedExecutionTemplate" ref="lcLocalCacheScopeExecutionTemplate"/>
+    </bean>
+    
+    <bean id="lcLocallyCacheableMethodAspect" class="com.eisgroup.eis.localcache.LocallyCacheableMethodAspect">
+        <property name="localCacheHolder" ref="lcLocalCacheHolder"/>
+    </bean>
+    
+    <bean id="lcLocalCacheScopeExecutionTemplate" class="com.eisgroup.eis.localcache.LocalCacheScopeExecutionTemplate">
+        <property name="localCacheHolder" ref="lcLocalCacheHolder"/>
+    </bean>
+    
+</beans>
